@@ -33,14 +33,14 @@ class TV(TMDb):
         :param append_to_response:
         :return:
         """
-        return AsObj(**self._call(self._urls['details'] % str(show_id), 'append_to_response=' + append_to_response))
+        return self._call(self._urls['details'] % str(show_id), 'append_to_response=' + append_to_response)
 
     def latest(self):
         """
         Get the most newly created TV show. This is a live response and will continuously change.
         :return:
         """
-        return AsObj(**self._call(self._urls['latest'], ''))
+        return self._call(self._urls['latest'], '')
 
     def search(self, term, page=1):
         """
@@ -49,7 +49,7 @@ class TV(TMDb):
         :param page:
         :return:
         """
-        return self._get_obj(self._call(self._urls['search_tv'], 'query=' + quote(term) + '&page=' + str(page)))
+        return self._call(self._urls['search_tv'], 'query=' + quote(term) + '&page=' + str(page))
 
     def similar(self, tv_id, page=1):
         """
@@ -58,7 +58,7 @@ class TV(TMDb):
         :param page:
         :return:
         """
-        return self._get_obj(self._call(self._urls['similar'] % str(tv_id), 'page=' + str(page)))
+        return self._call(self._urls['similar'] % str(tv_id), 'page=' + str(page))
 
     def popular(self, page=1):
         """
@@ -66,7 +66,7 @@ class TV(TMDb):
         :param page:
         :return:
         """
-        return self._get_obj(self._call(self._urls['popular'], 'page=' + str(page)))
+        return self._call(self._urls['popular'], 'page=' + str(page))
 
     def top_rated(self, page=1):
         """
@@ -74,7 +74,7 @@ class TV(TMDb):
         :param page:
         :return:
         """
-        return self._get_obj(self._call(self._urls['top_rated'], 'page=' + str(page)))
+        return self._call(self._urls['top_rated'], 'page=' + str(page))
 
     def recommendations(self, tv_id, page=1):
         """
@@ -83,7 +83,7 @@ class TV(TMDb):
         :param page:
         :return:
         """
-        return self._get_obj(self._call(self._urls['recommendations'] % tv_id, 'page=' + str(page)))
+        return self._call(self._urls['recommendations'] % tv_id, 'page=' + str(page))
 
     def videos(self, tv_id, page=1):
         """
@@ -92,7 +92,7 @@ class TV(TMDb):
         :param page:
         :return:
         """
-        return self._get_obj(self._call(self._urls['videos'] % tv_id, 'page=' + str(page)))
+        return self._call(self._urls['videos'] % tv_id, 'page=' + str(page))
 
     def airing_today(self, page=1):
         """
@@ -101,7 +101,7 @@ class TV(TMDb):
         :param page:
         :return:
         """
-        return self._get_obj(self._call(self._urls['airing_today'], 'page=' + str(page)))
+        return self._call(self._urls['airing_today'], 'page=' + str(page))
 
     def on_the_air(self, page=1):
         """
@@ -109,7 +109,7 @@ class TV(TMDb):
         :param page:
         :return:
         """
-        return self._get_obj(self._call(self._urls['on_the_air'], 'page=' + str(page)))
+        return self._call(self._urls['on_the_air'], 'page=' + str(page))
 
     def screened_theatrically(self, tv_id):
         """
@@ -117,7 +117,7 @@ class TV(TMDb):
         :param tv_id:
         :return:
         """
-        return self._get_obj(self._call(self._urls['screened_theatrically'] % tv_id, ''))
+        return self._call(self._urls['screened_theatrically'] % tv_id, '')
 
     def external_ids(self, id):
         """
@@ -125,7 +125,7 @@ class TV(TMDb):
         :param id:
         :return:
         """
-        return AsObj(**self._call(self._urls['external_ids'] % id, ''))
+        return self._call(self._urls['external_ids'] % id, '')
 
     def keywords(self, tv_id):
         """
@@ -133,7 +133,7 @@ class TV(TMDb):
         :param tv_id: int
         :return:
         """
-        return self._get_obj(self._call(self._urls['keywords'] % tv_id, ''))
+        return self._call(self._urls['keywords'] % tv_id, '')
 
     def reviews(self, tv_id, page=1):
         """
@@ -142,4 +142,4 @@ class TV(TMDb):
         :param tv_id: int
         :return:
         """
-        return self._get_obj(self._call(self._urls['reviews'] % tv_id, 'page=' + str(page)))
+        return self._call(self._urls['reviews'] % tv_id, 'page=' + str(page))

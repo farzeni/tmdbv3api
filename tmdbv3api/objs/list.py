@@ -12,4 +12,4 @@ class List(TMDb):
         :param list_id:
         :return:
         """
-        return self._get_obj(self._call(self._urls['details'] % str(list_id), ''), key='items')
+        return self._call(self._urls['details'] % str(list_id), '')

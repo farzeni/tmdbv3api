@@ -34,7 +34,7 @@ class Movie(TMDb):
         :param movie_id:
         :return:
         """
-        return self._get_obj(self._call(self._urls['keywords'] % movie_id, ''), 'keywords')
+        return self._call(self._urls['keywords'] % movie_id, '')
 
     def details(self, movie_id, append_to_response='videos,trailers,images,casts,translations,keywords'):
         """
@@ -43,7 +43,7 @@ class Movie(TMDb):
         :param append_to_response:
         :return:
         """
-        return AsObj(**self._call(self._urls['details'] % movie_id, 'append_to_response=' + append_to_response))
+        return self._call(self._urls['details'] % movie_id, 'append_to_response=' + append_to_response)
 
     def credits(self, movie_id):
         """
@@ -51,7 +51,7 @@ class Movie(TMDb):
         :param movie_id:
         :return:
         """
-        return AsObj(**self._call(self._urls['credits'] % movie_id, ''))
+        return self._call(self._urls['credits'] % movie_id, '')
 
     def reviews(self, movie_id, page=1):
         """
@@ -60,7 +60,7 @@ class Movie(TMDb):
         :param page:
         :return:
         """
-        return self._get_obj(self._call(self._urls['reviews'] % movie_id, 'page=' + str(page)))
+        return self._call(self._urls['reviews'] % movie_id, 'page=' + str(page))
 
     def lists(self, movie_id, page=1):
         """
@@ -69,7 +69,7 @@ class Movie(TMDb):
         :param page:
         :return:
         """
-        return self._get_obj(self._call(self._urls['lists'] % movie_id, 'page=' + str(page)))
+        return self._call(self._urls['lists'] % movie_id, 'page=' + str(page))
 
     def videos(self, id, page=1):
         """
@@ -78,7 +78,7 @@ class Movie(TMDb):
         :param page:
         :return:
         """
-        return self._get_obj(self._call(self._urls['videos'] % id, 'page=' + str(page)))
+        return self._call(self._urls['videos'] % id, 'page=' + str(page))
 
     def recommendations(self, movie_id, page=1):
         """
@@ -87,14 +87,14 @@ class Movie(TMDb):
         :param page:
         :return:
         """
-        return self._get_obj(self._call(self._urls['recommendations'] % movie_id, 'page=' + str(page)))
+        return self._call(self._urls['recommendations'] % movie_id, 'page=' + str(page))
 
     def latest(self):
         """
         Get the most newly created movie. This is a live response and will continuously change.
         :return:
         """
-        return AsObj(**self._call(self._urls['latest'], ''))
+        return self._call(self._urls['latest'], '')
 
     def now_playing(self, page=1):
         """
@@ -102,7 +102,7 @@ class Movie(TMDb):
         :param page:
         :return:
         """
-        return self._get_obj(self._call(self._urls['now_playing'], 'page=' + str(page)))
+        return self._call(self._urls['now_playing'], 'page=' + str(page))
 
     def top_rated(self, page=1):
         """
@@ -110,7 +110,7 @@ class Movie(TMDb):
         :param page:
         :return:
         """
-        return self._get_obj(self._call(self._urls['top_rated'], 'page=' + str(page)))
+        return self._call(self._urls['top_rated'], 'page=' + str(page))
 
     def upcoming(self, page=1):
         """
@@ -118,7 +118,7 @@ class Movie(TMDb):
         :param page:
         :return:
         """
-        return self._get_obj(self._call(self._urls['upcoming'], 'page=' + str(page)))
+        return self._call(self._urls['upcoming'], 'page=' + str(page))
 
     def popular(self, page=1):
         """
@@ -126,7 +126,7 @@ class Movie(TMDb):
         :param page:
         :return:
         """
-        return self._get_obj(self._call(self._urls['popular'], 'page=' + str(page)))
+        return self._call(self._urls['popular'], 'page=' + str(page))
 
     def search(self, term, page=1):
         """
@@ -135,7 +135,7 @@ class Movie(TMDb):
         :param page:
         :return:
         """
-        return self._get_obj(self._call(self._urls['search_movie'], "query=" + quote(term) + "&page=" + str(page)))
+        return self._call(self._urls['search_movie'], "query=" + quote(term) + "&page=" + str(page))
 
     def similar(self, movie_id, page=1):
         """
@@ -144,7 +144,7 @@ class Movie(TMDb):
         :param page:
         :return:
         """
-        return self._get_obj(self._call(self._urls['similar'] % movie_id, 'page=' + str(page)))
+        return self._call(self._urls['similar'] % movie_id, 'page=' + str(page))
 
     def external(self, external_id, external_source):
         """
@@ -153,8 +153,7 @@ class Movie(TMDb):
         :param external_source str
         :return:
         """
-        return self._get_obj(self._call(self._urls['external'] % external_id, 'external_source=' + external_source),
-                             key=None)
+        return self._call(self._urls['external'] % external_id, 'external_source=' + external_source)
 
     def images(self, movie_id):
         """
@@ -162,7 +161,7 @@ class Movie(TMDb):
         :param movie_id:
         :return:
         """
-        return AsObj(**self._call(self._urls['images'] % movie_id, ''))
+        return self._call(self._urls['images'] % movie_id, '')
 
     def external_ids(self, movie_id):
         """
@@ -170,4 +169,4 @@ class Movie(TMDb):
         :param movie_id:
         :return:
         """
-        return self._get_obj(self._call(self._urls['external_ids'] % (str(movie_id)), ''), None)
+        return self._call(self._urls['external_ids'] % (str(movie_id)), '')

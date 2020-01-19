@@ -42,11 +42,11 @@ class TMDbTests(unittest.TestCase):
     def test_get_movie(self):
         movie = self.movie.details(111)
         self.assertIsNotNone(movie)
-        self.assertEqual(movie.title, 'Scarface')
-        self.assertEqual(movie.id, 111)
-        self.assertTrue(hasattr(movie, 'title'))
-        self.assertTrue(hasattr(movie, 'overview'))
-        self.assertTrue(hasattr(movie, 'id'))
+        self.assertEqual(movie['title'], 'Scarface')
+        self.assertEqual(movie['id'], 111)
+        self.assertTrue('title' in  movie)
+        self.assertTrue('overview' in  movie)
+        self.assertTrue('id' in  movie)
 
     def test_get_movie_reviews(self):
         search = self.movie.search("Mad Max")
@@ -55,8 +55,8 @@ class TMDbTests(unittest.TestCase):
         reviews = self.movie.reviews(first.id)
         self.assertTrue(len(reviews) > 0)
         for review in reviews:
-            self.assertTrue(hasattr(review, 'id'))
-            self.assertTrue(hasattr(review, 'content'))
+            self.assertTrue('id' in review))
+            self.assertTrue('content' in review))
 
     def test_get_movie_lists(self):
         lists = self.movie.lists(111)

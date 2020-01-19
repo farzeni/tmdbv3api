@@ -10,4 +10,4 @@ class Account(TMDb):
     }
 
     def details(self):
-        return AsObj(**self._call(self._urls['details'], 'session_id=%s' % os.environ.get('TMDB_SESSION_ID')))
+        return self._call(self._urls['details'], 'session_id=%s' % os.environ.get('TMDB_SESSION_ID'))

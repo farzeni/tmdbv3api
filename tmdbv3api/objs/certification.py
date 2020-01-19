@@ -9,7 +9,7 @@ class Certification(TMDb):
     }
 
     def movie_list(self):
-        return AsObj(**self._call(self._urls['movie_list'], ''))
+        return self._call(self._urls['movie_list'], '')
 
     def tv_list(self):
-        return AsObj(**self._call(self._urls['tv_list'], ''))
+        return self._call(self._urls['tv_list'], '')

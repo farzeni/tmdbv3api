@@ -11,4 +11,4 @@ class Configuration(TMDb):
         """
         Get the system wide configuration info.
         """
-        return AsObj(**self._call(self._urls['info'], ''))
+        return self._call(self._urls['info'], '')

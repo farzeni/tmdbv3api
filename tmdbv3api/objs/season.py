@@ -21,8 +21,7 @@ class Season(TMDb):
         :param append_to_response:
         :return:
         """
-        return AsObj(**self._call(self._urls['details'] % (str(tv_id), str(season_num)),
-                                  'append_to_response=' + append_to_response))
+        return self._call(self._urls['details'] % (str(tv_id), str(season_num)), 'append_to_response=' + append_to_response)
 
     def changes(self, season_id, append_to_response='videos,trailers,images,casts,translations'):
         """
@@ -31,7 +30,7 @@ class Season(TMDb):
         :param season_id: int
         :return:
         """
-        return AsObj(**self._call(self._urls['changes'] % str(season_id), 'append_to_response=' + append_to_response))
+        return self._call(self._urls['changes'] % str(season_id), 'append_to_response=' + append_to_response)
 
     def account_states(self, tv_id, season_num):
         """
@@ -40,7 +39,7 @@ class Season(TMDb):
         :param season_num:
         :return:
         """
-        return self._get_obj(self._call(self._urls['account_states'] % (str(tv_id), str(season_num)), ''), None)
+        return self._call(self._urls['account_states'] % (str(tv_id), str(season_num)), '')
 
     def credits(self, tv_id, season_num):
         """
@@ -49,7 +48,7 @@ class Season(TMDb):
         :param season_num:
         :return:
         """
-        return self._get_obj(self._call(self._urls['credits'] % (str(tv_id), str(season_num)), ''), 'cast')
+        return self._call(self._urls['credits'] % (str(tv_id), str(season_num)), '')
 
     def external_ids(self, tv_id, season_num):
         """
@@ -58,7 +57,7 @@ class Season(TMDb):
         :param season_num:
         :return:
         """
-        return self._get_obj(self._call(self._urls['external_ids'] % (str(tv_id), str(season_num)), ''), None)
+        return self._call(self._urls['external_ids'] % (str(tv_id), str(season_num)), '')
 
     def images(self, tv_id, season_num, page=1):
         """
@@ -68,8 +67,7 @@ class Season(TMDb):
         :param season_num:
         :return:
         """
-        return self._get_obj(self._call(self._urls['images'] % (str(tv_id), str(season_num)), 'page=' + str(page)),
-                             'posters')
+        return self._call(self._urls['images'] % (str(tv_id), str(season_num)), 'page=' + str(page))
 
     def videos(self, tv_id, season_num, page=1):
         """
@@ -79,4 +77,4 @@ class Season(TMDb):
         :param page:
         :return:
         """
-        return self._get_obj(self._call(self._urls['videos'] % (str(tv_id), str(season_num)), 'page=' + str(page)))
+        return self._call(self._urls['videos'] % (str(tv_id), str(season_num)), 'page=' + str(page))

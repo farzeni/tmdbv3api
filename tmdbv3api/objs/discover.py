@@ -18,7 +18,7 @@ class Discover(TMDb):
         :param params:
         :return:
         """
-        return self._get_obj(self._call(self._urls['movies'], urlencode(params)))
+        return self._call(self._urls['movies'], urlencode(params))
 
     def discover_tv_shows(self, params):
         """
@@ -27,4 +27,4 @@ class Discover(TMDb):
         :param params:
         :return:
         """
-        return self._get_obj(self._call(self._urls['tv'], urlencode(params)))
+        return self._call(self._urls['tv'], urlencode(params))
